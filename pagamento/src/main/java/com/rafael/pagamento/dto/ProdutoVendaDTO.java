@@ -23,10 +23,7 @@ public class ProdutoVendaDTO extends RepresentationModel<ProdutoVendaDTO> implem
 	@JsonProperty("qtdProdutos")
 	private Integer qtdProdutos;
 	
-	public static ProdutoVendaDTO create(ProdutoVendaDTO produto) {
-		return new ModelMapper().map(produto, ProdutoVendaDTO.class);
-	}
-
+	
 
 	public Long getId() {
 		return id;
@@ -58,8 +55,11 @@ public class ProdutoVendaDTO extends RepresentationModel<ProdutoVendaDTO> implem
 	}
 	
 	public ProdutoVendaDTO() {
-		// TODO Auto-generated constructor stub
 	}
 	
+	public static ProdutoVendaDTO create(ProdutoVendaDTO produto) {
+		return new ModelMapper().map(produto, ProdutoVendaDTO.class);
+	}
+
 	
 }

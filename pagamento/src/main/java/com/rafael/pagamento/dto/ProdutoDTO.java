@@ -26,9 +26,7 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Seria
 	@JsonProperty("estoque")
 	private Integer estoque;
 
-	public static ProdutoDTO create(Produto produto) {
-		return new ModelMapper().map(produto, ProdutoDTO.class);
-	}
+	
 
 	public Long getId() {
 		return id;
@@ -50,6 +48,8 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Seria
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	public static ProdutoDTO create(Produto produto) {
+		return new ModelMapper().map(produto, ProdutoDTO.class);
+	}
 
 }

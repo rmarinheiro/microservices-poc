@@ -13,8 +13,10 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rafael.pagamento.entity.ProdutoVenda;
 import com.rafael.pagamento.entity.Venda;
 
-@JsonPropertyOrder({ "id", "valorTotal", "data", "produtos" })
+@JsonPropertyOrder({ "id", "data", "valorTotal", "produtos" })
 public class VendaDTO extends RepresentationModel<VendaDTO> implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@JsonProperty("id")
 	private Long id;

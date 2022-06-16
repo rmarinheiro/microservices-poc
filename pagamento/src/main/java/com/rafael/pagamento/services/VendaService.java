@@ -24,17 +24,18 @@ public class VendaService {
 	private VendaRepository vendaRepository;
 	
 	@Autowired
-	private ProdutoVendaRepository produtoVendaRepository;
+	private  ProdutoVendaRepository produtoVendaRepository;
 
 	public VendaDTO create(VendaDTO vendaDTO) {
 		Venda venda = vendaRepository.save(Venda.create(vendaDTO));
 		List<ProdutoVenda> produtosSalvos = new ArrayList<>();
 		vendaDTO.getListaProdutosVenda().forEach(p-> { 
-			ProdutoVenda pv = ProdutoVenda.create(p);
+			ProdutoVenda pv =  ProdutoVenda.create(p);
 			pv.setVenda(venda);
 			produtosSalvos.add(produtoVendaRepository.save(pv));
 		});
 		venda.setListaProdutos(produtosSalvos);
+		
 		return vendaDTO.create(venda);
 
 	}

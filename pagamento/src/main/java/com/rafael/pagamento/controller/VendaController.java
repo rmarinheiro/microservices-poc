@@ -3,6 +3,7 @@ package com.rafael.pagamento.controller;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,9 +22,10 @@ import com.rafael.pagamento.dto.VendaDTO;
 import com.rafael.pagamento.services.VendaService;
 
 @RestController
-@RequestMapping(name = "/vendas")
+@RequestMapping(value = "/vendas")
 public class VendaController {
 	
+	@Autowired
 	private VendaService service;
 	
 	private final PagedResourcesAssembler<VendaDTO> assembler = null;
@@ -40,7 +42,7 @@ public class VendaController {
 	public ResponseEntity<?> findByAll(@RequestParam(value = "page", defaultValue = "0") int page,
 			@RequestParam(value = "limt", defaultValue = "12") int limt,
 			@RequestParam(value = "direction", defaultValue = "asc") String direction,
-			@RequestParam(value = "orderBy", defaultValue = "nomeProduto") String orderBy) {
+			@RequestParam(value = "orderBy", defaultValue = "valorTotal") String orderBy) {
 
 		// var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC :
 		// Direction.ASC;
