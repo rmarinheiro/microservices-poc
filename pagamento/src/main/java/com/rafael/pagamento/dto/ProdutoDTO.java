@@ -51,5 +51,9 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Seria
 	public static ProdutoDTO create(Produto produto) {
 		return new ModelMapper().map(produto, ProdutoDTO.class);
 	}
+	
+	public static Produto create(ProdutoDTO produto) {
+		return new ModelMapper().map(produto, Produto.class);
+	}
 
 }

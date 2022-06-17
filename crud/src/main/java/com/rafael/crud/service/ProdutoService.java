@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.rafael.crud.DTO.ProductDTO;
 import com.rafael.crud.entities.Produto;
 import com.rafael.crud.exceptions.ResoruceNotFoundException;
+import com.rafael.crud.message.ProdutoSendMessage;
 import com.rafael.crud.repository.ProdutoRepository;
 
 @Service
@@ -18,8 +19,12 @@ public class ProdutoService {
 	@Autowired
 	private ProdutoRepository repository;
 	
+	@Autowired
+	private ProdutoSendMessage produtoSendMessage;
+	
 	public ProductDTO create(ProductDTO produtoDTO) {
 		ProductDTO dto= ProductDTO.create(repository.save(Produto.create(produtoDTO)));
+		produtoSendMessage.sendMessage(produtoDTO);
 		return dto;
 		
 	}
