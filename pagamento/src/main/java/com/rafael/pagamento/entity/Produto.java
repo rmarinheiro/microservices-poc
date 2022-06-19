@@ -24,6 +24,19 @@ public class Produto {
 	
 	@Column(name="nomeProduto" ,nullable = false , length = 255)
 	private String nomeProduto;
+	
+	@Column(name = "preco",nullable = false,length = 255)
+	private Double preco;
+	
+	
+
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
 
 	public Long getId() {
 		return id;

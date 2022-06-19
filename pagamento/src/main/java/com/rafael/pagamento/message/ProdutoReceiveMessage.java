@@ -26,6 +26,7 @@ public class ProdutoReceiveMessage {
 	public void update(@Payload ProdutoDTO produtoDTO) {
 		Produto produto= produtoRepository.findByNomeProduto(produtoDTO.getNomeProduto());
 		produto.setEstoque(produtoDTO.getEstoque());
+		produto.setPreco(produtoDTO.getPreco());
 		produtoRepository.save(produto);
 		
 		
