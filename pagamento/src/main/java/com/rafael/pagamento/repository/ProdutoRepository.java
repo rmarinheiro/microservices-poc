@@ -7,5 +7,6 @@ import com.rafael.pagamento.entity.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-
+	
+	Produto findByNomeProduto(String nomeProduto);
 }

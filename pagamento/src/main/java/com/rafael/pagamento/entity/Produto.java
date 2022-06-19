@@ -21,6 +21,9 @@ public class Produto {
 	
 	@Column(name = "estoque" , nullable = false ,length = 10)
 	private Integer estoque;
+	
+	@Column(name="nomeProduto" ,nullable = false , length = 255)
+	private String nomeProduto;
 
 	public Long getId() {
 		return id;
@@ -38,9 +41,21 @@ public class Produto {
 		this.estoque = estoque;
 	}
 	
+	
+	
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+	}
+
 	public Produto() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	
 
 	public Produto(Long id, Integer estoque) {
 		super();

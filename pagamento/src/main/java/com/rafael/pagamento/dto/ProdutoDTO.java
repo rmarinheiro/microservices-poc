@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.rafael.pagamento.entity.Produto;
 
-@JsonPropertyOrder({ "id", "estoque"})
+@JsonPropertyOrder({ "id", "estoque","nomeProduto"})
 public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Serializable {
 
 	
@@ -25,8 +25,20 @@ public class ProdutoDTO extends RepresentationModel<ProdutoDTO> implements Seria
 	
 	@JsonProperty("estoque")
 	private Integer estoque;
+	
+	@JsonProperty("nomeProduto")
+	private String nomeProduto;
+
 
 	
+
+	public String getNomeProduto() {
+		return nomeProduto;
+	}
+
+	public void setNomeProduto(String nomeProduto) {
+		this.nomeProduto = nomeProduto;
+	}
 
 	public Long getId() {
 		return id;

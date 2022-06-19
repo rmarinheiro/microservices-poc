@@ -11,6 +11,7 @@ import com.rafael.crud.DTO.ProductDTO;
 import com.rafael.crud.entities.Produto;
 import com.rafael.crud.exceptions.ResoruceNotFoundException;
 import com.rafael.crud.message.ProdutoSendMessage;
+import com.rafael.crud.message.ProdutoUpdateMessage;
 import com.rafael.crud.repository.ProdutoRepository;
 
 @Service
@@ -21,6 +22,9 @@ public class ProdutoService {
 	
 	@Autowired
 	private ProdutoSendMessage produtoSendMessage;
+	
+	@Autowired
+	private  ProdutoUpdateMessage produtoUpdateMessage;
 	
 	public ProductDTO create(ProductDTO produtoDTO) {
 		ProductDTO dto= ProductDTO.create(repository.save(Produto.create(produtoDTO)));
@@ -47,13 +51,14 @@ public class ProdutoService {
 	}
 	
 	public ProductDTO update (ProductDTO productDTO, Long id) {
-		final Optional<Produto> optionalProduto = repository.findById(id);
-		
-		if(!optionalProduto.isPresent()) {
-			new ResoruceNotFoundException("Not Found for Id");
-		}
-		
-		return productDTO.create(repository.save(Produto.create(productDTO)));
+		Produto produto = repository.findById(id).get();
+		produto.setEstoque(productDTO.getEstoque());
+		produto.setNomeProduto(productDTO.getNomeProduto());
+		produto.setPreco(productDTO.getPreco());
+		Produto produtoNovo =repository.save(produto);
+		//ProductDTO dto= productDTO.create(repository.save(produto.create(productDTO)));
+		produtoUpdateMessage.sendMessage(productDTO);
+		return productDTO.create(produtoNovo);
 	}
 	
 	
